@@ -1,0 +1,789 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Geoffrey Mwaba is an Information Technology student in Zambia building thoughtful, accessible web experiences and looking for a front-end development internship.">
+  <meta name="theme-color" content="#f5f5ef">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Geoffrey Mwaba — Front-end developer">
+  <meta property="og:description" content="IT student in Zambia, building thoughtful, accessible web experiences.">
+  <title>Geoffrey Mwaba — Front-end developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --page: #f5f5ef;
+      --surface: #fff;
+      --ink: #17221c;
+      --muted: #66736a;
+      --line: #dce2da;
+      --green: #176b49;
+      --green-dark: #10553a;
+      --green-soft: #e7f0e9;
+      --orange: #e4773f;
+      --mono: "DM Mono", "SFMono-Regular", Consolas, monospace;
+      --sans: "Manrope", "Segoe UI", sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: dark;
+        --page: #111813;
+        --surface: #18221b;
+        --ink: #edf2ec;
+        --muted: #a5b2a8;
+        --line: #2c3a30;
+        --green: #75d5a0;
+        --green-dark: #98e5b7;
+        --green-soft: #1e3125;
+        --orange: #ff9b67;
+      }
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-padding-top: 88px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-width: 320px;
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font: 400 16px/1.7 var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--green-dark);
+      text-underline-offset: 4px;
+    }
+
+    a:focus-visible {
+      outline: 3px solid var(--orange);
+      outline-offset: 4px;
+      border-radius: 3px;
+    }
+
+    .skip-link {
+      position: absolute;
+      z-index: 10;
+      top: 12px;
+      left: 12px;
+      padding: 9px 14px;
+      transform: translateY(-160%);
+      border-radius: 6px;
+      background: var(--ink);
+      color: var(--page);
+      text-decoration: none;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .wrap {
+      width: min(100% - 48px, 1060px);
+      margin-inline: auto;
+    }
+
+    .topbar {
+      position: sticky;
+      z-index: 5;
+      top: 0;
+      border-bottom: 1px solid var(--line);
+      background: var(--page);
+    }
+
+    .topbar-inner {
+      display: flex;
+      min-height: 70px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      color: var(--ink);
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: -.07em;
+      text-decoration: none;
+    }
+
+    .brand span {
+      color: var(--green);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: clamp(14px, 3vw, 30px);
+    }
+
+    .nav a {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible {
+      color: var(--green-dark);
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      min-height: 490px;
+      align-items: center;
+      grid-template-columns: minmax(0, 1fr) 210px;
+      gap: 32px;
+      padding-block: 86px 78px;
+    }
+
+    .eyebrow,
+    .section-index,
+    .project-meta,
+    .footer-note {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow {
+      margin: 0 0 22px;
+      color: var(--green);
+    }
+
+    .hero h1 {
+      max-width: 720px;
+      font-size: clamp(3.5rem, 9vw, 7.5rem);
+      font-weight: 800;
+      letter-spacing: -.095em;
+      line-height: .94;
+    }
+
+    .hero h1 span {
+      color: var(--green);
+    }
+
+    .role {
+      margin: 22px 0 0;
+      font-size: clamp(17px, 2vw, 21px);
+      font-weight: 600;
+    }
+
+    .intro {
+      max-width: 580px;
+      margin: 13px 0 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .hero-mark {
+      position: relative;
+      display: grid;
+      width: 190px;
+      aspect-ratio: 1;
+      justify-self: end;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--green);
+      font-size: 56px;
+      font-weight: 800;
+      letter-spacing: -.12em;
+    }
+
+    .hero-mark::before,
+    .hero-mark::after {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--orange);
+      content: "";
+    }
+
+    .hero-mark::before {
+      top: 15%;
+      right: 16%;
+    }
+
+    .hero-mark::after {
+      bottom: 12%;
+      left: 13%;
+      width: 6px;
+      height: 6px;
+      background: var(--green);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 46px;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 10px 17px;
+      border: 1px solid var(--green);
+      border-radius: 6px;
+      color: var(--green-dark);
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+      transition: background-color .18s ease, color .18s ease, transform .18s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      background: var(--green);
+      color: var(--page);
+    }
+
+    .button-primary:hover {
+      background: var(--green-dark);
+      color: var(--page);
+    }
+
+    .button-secondary:hover {
+      background: var(--green-soft);
+    }
+
+    .section {
+      display: grid;
+      grid-template-columns: 190px minmax(0, 1fr);
+      gap: 32px;
+      padding-block: 58px;
+      border-top: 1px solid var(--line);
+      scroll-margin-top: 70px;
+    }
+
+    .section-heading {
+      position: sticky;
+      top: 95px;
+      align-self: start;
+    }
+
+    .section-index {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--green);
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: clamp(24px, 3vw, 33px);
+      font-weight: 800;
+      letter-spacing: -.06em;
+      line-height: 1.15;
+    }
+
+    .section-content {
+      min-width: 0;
+    }
+
+    .about-copy {
+      max-width: 650px;
+      margin: 0;
+      font-size: clamp(17px, 2vw, 21px);
+      line-height: 1.75;
+    }
+
+    .about-copy + .about-copy {
+      margin-top: 15px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .skills-list,
+    .course-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .skill-row,
+    .course-row {
+      display: grid;
+      grid-template-columns: minmax(150px, .8fr) minmax(0, 1.5fr);
+      gap: 12px 28px;
+      padding-block: 17px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .skill-row:first-child,
+    .course-row:first-child {
+      padding-top: 0;
+    }
+
+    .skill-row strong,
+    .course-row strong {
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .skill-row p,
+    .course-row p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .project-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .project {
+      display: flex;
+      min-height: 235px;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 23px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      transition: border-color .18s ease, transform .18s ease;
+    }
+
+    .project:hover {
+      transform: translateY(-3px);
+      border-color: var(--green);
+    }
+
+    .project-meta {
+      margin: 0 0 12px;
+      color: var(--green);
+      font-size: 10px;
+    }
+
+    .project h3,
+    .education h3 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -.04em;
+      line-height: 1.35;
+    }
+
+    .project-description {
+      margin: 11px 0 18px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: auto 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .tags li {
+      padding: 4px 8px;
+      border-radius: 4px;
+      background: var(--green-soft);
+      color: var(--green-dark);
+      font-family: var(--mono);
+      font-size: 10px;
+    }
+
+    .education {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+    }
+
+    .education p {
+      margin: 8px 0 17px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .contact-card {
+      padding: clamp(24px, 5vw, 42px);
+      border-radius: 8px;
+      background: var(--green-soft);
+    }
+
+    .contact-card > p {
+      margin: 0 0 8px;
+      color: var(--muted);
+    }
+
+    .email {
+      font-size: clamp(19px, 3vw, 30px);
+      font-weight: 800;
+      letter-spacing: -.06em;
+      overflow-wrap: anywhere;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 24px;
+      margin: 22px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .contact-links a {
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-block: 24px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .footer strong {
+      color: var(--ink);
+    }
+
+    @media (max-width: 720px) {
+      .wrap {
+        width: min(100% - 36px, 560px);
+      }
+
+      .topbar-inner {
+        min-height: 62px;
+        gap: 16px;
+      }
+
+      .nav {
+        gap: 16px;
+        overflow-x: auto;
+      }
+
+      .nav a {
+        font-size: 12px;
+      }
+
+      .nav a:nth-last-child(n+5) {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+        grid-template-columns: minmax(0, 1fr) 84px;
+        gap: 10px;
+        padding-block: 64px 52px;
+      }
+
+      .hero-mark {
+        width: 76px;
+        align-self: start;
+        margin-top: 8px;
+        font-size: 25px;
+      }
+
+      .hero h1 {
+        font-size: clamp(3.3rem, 13vw, 5rem);
+      }
+
+      .section {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding-block: 42px;
+        scroll-margin-top: 62px;
+      }
+
+      .section-heading {
+        position: static;
+      }
+
+      .section-index {
+        margin-bottom: 6px;
+      }
+
+      .project-list {
+        grid-template-columns: 1fr;
+      }
+
+      .project {
+        min-height: 200px;
+      }
+    }
+
+    @media (max-width: 460px) {
+      .wrap {
+        width: min(100% - 30px, 420px);
+      }
+
+      .nav {
+        gap: 12px;
+      }
+
+      .nav a {
+        font-size: 11px;
+      }
+
+      .nav a:nth-child(2),
+      .nav a:nth-child(5) {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-mark {
+        position: absolute;
+        top: 44px;
+        right: 2px;
+        width: 54px;
+        opacity: .75;
+        font-size: 18px;
+      }
+
+      .eyebrow {
+        max-width: calc(100% - 56px);
+      }
+
+      .skill-row,
+      .course-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .footer {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 4px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#top" aria-label="Geoffrey Mwaba, back to top">g<span>.</span>m</a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#coursework">Coursework</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="wrap">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div>
+          <p class="eyebrow">Information technology · Zambia</p>
+          <h1 id="hero-title">Geoffrey<br><span>Mwaba.</span></h1>
+          <p class="role">Aspiring front-end web developer</p>
+          <p class="intro">IT student at Zambia University College of Technology, open to remote front-end internships. I like turning a brief into something structured, validated and well documented.</p>
+          <div class="actions">
+            <a class="button button-primary" href="#projects">Explore my work <span aria-hidden="true">↘</span></a>
+            <a class="button button-secondary" href="#contact">Get in touch</a>
+          </div>
+        </div>
+        <div class="hero-mark" aria-hidden="true">gm</div>
+      </section>
+
+      <section class="section" id="about" aria-labelledby="about-title">
+        <div class="section-heading">
+          <span class="section-index">01 / Introduction</span>
+          <h2 id="about-title">A little about me</h2>
+        </div>
+        <div class="section-content">
+          <p class="about-copy">I’m a Bachelor of Information Technology student with hands-on coursework in semantic HTML5 site structure, Figma wireframing and brand design, supported by programming in Python and C++.</p>
+          <p class="about-copy">I’m looking for a remote front-end web development internship where I can build clean, user-focused interfaces as part of a team.</p>
+        </div>
+      </section>
+
+      <section class="section" id="skills" aria-labelledby="skills-title">
+        <div class="section-heading">
+          <span class="section-index">02 / Capabilities</span>
+          <h2 id="skills-title">What I work with</h2>
+        </div>
+        <div class="section-content">
+          <dl class="skills-list">
+            <div class="skill-row">
+              <dt><strong>Front-end foundations</strong></dt>
+              <dd><p>Semantic HTML5, HTML validation, website file structure and architecture, wireframing in Figma</p></dd>
+            </div>
+            <div class="skill-row">
+              <dt><strong>Design</strong></dt>
+              <dd><p>Figma, logo and brand identity design (SVG and PNG), typography and multimedia fundamentals</p></dd>
+            </div>
+            <div class="skill-row">
+              <dt><strong>Programming</strong></dt>
+              <dd><p>Python, C++, data structures and algorithms: Frequency Count Method, Big-O analysis, queues, binary search trees and AVL trees</p></dd>
+            </div>
+            <div class="skill-row">
+              <dt><strong>Tools and communication</strong></dt>
+              <dd><p>Draw.io, architecture diagrams, technical reports and recorded video presentations</p></dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="section" id="projects" aria-labelledby="projects-title">
+        <div class="section-heading">
+          <span class="section-index">03 / Selected work</span>
+          <h2 id="projects-title">Projects &amp; practice</h2>
+        </div>
+        <div class="section-content project-list">
+          <article class="project">
+            <p class="project-meta">Individual coursework</p>
+            <h3>Website blueprint</h3>
+            <p class="project-description">Planned a business website from the ground up: a semantic wireframe in Figma, a file and folder structure, and a validated HTML5 template, packaged in one documented PDF.</p>
+            <ul class="tags" aria-label="Technologies and skills">
+              <li>HTML5</li><li>Figma</li><li>Wireframing</li>
+            </ul>
+          </article>
+          <article class="project">
+            <p class="project-meta">Design project</p>
+            <h3>Tumango Delivery brand identity</h3>
+            <p class="project-description">Created brand identity assets for a delivery service, including its logo, then refined the design into scalable SVG and PNG versions.</p>
+            <ul class="tags" aria-label="Technologies and skills">
+              <li>Logo design</li><li>SVG</li><li>PNG</li>
+            </ul>
+          </article>
+          <article class="project">
+            <p class="project-meta">Group assignment · Multimedia Technologies</p>
+            <h3>Offline multimedia learning system</h3>
+            <p class="project-description">Contributed interface sketches, content structure and report sections to a proposed offline learning system for secondary schools in Zambia.</p>
+            <ul class="tags" aria-label="Technologies and skills">
+              <li>Interface sketches</li><li>Content structure</li><li>Report writing</li>
+            </ul>
+          </article>
+          <article class="project">
+            <p class="project-meta">Data Structures and Algorithms</p>
+            <h3>Software projects</h3>
+            <p class="project-description">Built a Library Management System and Cafeteria Queue System in C++, and a Helpdesk Request System in Python. Each included an architecture diagram, report and video presentation. Also analysed algorithms and visualized binary search trees and AVL trees.</p>
+            <ul class="tags" aria-label="Technologies and skills">
+              <li>C++</li><li>Python</li><li>Documentation</li>
+            </ul>
+          </article>
+          <article class="project">
+            <p class="project-meta">Group project · Computer Architecture</p>
+            <h3>AI accelerator simulation</h3>
+            <p class="project-description">Working on power-performance integration for a ResNet-50 convolution block simulation, comparing 8×8, 32×32 and 64×64 PE arrays and output-stationary and row-stationary dataflows.</p>
+            <ul class="tags" aria-label="Technologies and skills">
+              <li>Timeloop</li><li>Accelergy</li><li>McPAT</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="education" aria-labelledby="education-title">
+        <div class="section-heading">
+          <span class="section-index">04 / Education</span>
+          <h2 id="education-title">Currently learning</h2>
+        </div>
+        <div class="section-content">
+          <article class="education">
+            <h3>Bachelor of Information Technology</h3>
+            <p>Zambia University College of Technology · Expected graduation: January 2028</p>
+            <ul class="tags" aria-label="Areas of study">
+              <li>Multimedia Technologies</li><li>Data Structures and Algorithms</li><li>Computer Architecture</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="coursework" aria-labelledby="coursework-title">
+        <div class="section-heading">
+          <span class="section-index">05 / In the classroom</span>
+          <h2 id="coursework-title">Coursework</h2>
+        </div>
+        <div class="section-content">
+          <dl class="course-list">
+            <div class="course-row">
+              <dt><strong>BIT2240 · Fundamentals of Multimedia Technologies</strong></dt>
+              <dd><p>Multimedia and typography concepts, and a group proposal for an offline learning system to address the digital divide in Zambian secondary schools.</p></dd>
+            </div>
+            <div class="course-row">
+              <dt><strong>BIT2250 · Fundamentals of Data Structures and Algorithms</strong></dt>
+              <dd><p>Frequency Count Method and Big-O analysis, queues, binary search trees and AVL trees, plus three documented and presented applications in C++ and Python.</p></dd>
+            </div>
+            <div class="course-row">
+              <dt><strong>BIT2220 · Computer Architecture and Organization</strong></dt>
+              <dd><p>A group AI accelerator project exploring PE arrays, dataflows, INT8 versus FP8 precision, memory bandwidth, GPU comparison and power-performance analysis with Timeloop, Accelergy and McPAT.</p></dd>
+            </div>
+            <div class="course-row">
+              <dt><strong>Website blueprint lab · Lesson 02</strong></dt>
+              <dd><p>A semantic Figma wireframe, a website file structure and a validated HTML5 template, submitted as one PDF.</p></dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="section" id="contact" aria-labelledby="contact-title">
+        <div class="section-heading">
+          <span class="section-index">06 / Say hello</span>
+          <h2 id="contact-title">Let’s connect</h2>
+        </div>
+        <div class="section-content">
+          <div class="contact-card">
+            <p>I’m open to remote internships. Email is the quickest way to reach me.</p>
+            <a class="email" href="mailto:geoffreymwaba2@gmail.com">geoffreymwaba2@gmail.com</a>
+            <ul class="contact-links">
+              <li><a href="tel:+260767451031">+260 767 451 031</a></li>
+              <li><a href="https://github.com/geoffreymwaba2-cpu" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></li>
+              <li><a href="https://www.linkedin.com/in/geoffrey-mwaba-267003443" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span><strong>Geoffrey Mwaba</strong> · Front-end developer in progress</span>
+        <span class="footer-note">© <span id="year">2026</span> · Made in Zambia</span>
+      </footer>
+    </div>
+  </main>
+</body>
+</html>
